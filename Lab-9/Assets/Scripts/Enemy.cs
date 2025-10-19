@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
         currentHP = stats.HP;
         Debug.Log($"[Enemy] Stats applied: HP={stats.HP}, Speed={stats.Speed}, Score={stats.PointsAwarded}");
     }
+
     public void TakeDamage(float damage)
     {
         currentHP -= damage;
@@ -25,7 +26,14 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Debug.Log($"[Enemy] {name} died! Awarding {Stats.PointsAwarded} points.");
-        // TODO: Add explosion, sound, or score logic here
+
+        // Notify ScoreManager
+        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        if (scoreManager != null)
+        {
+            scoreManager.AddScore(Stats.PointsAwarded);
+        }
+
         Destroy(gameObject);
     }
 }
