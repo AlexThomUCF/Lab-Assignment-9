@@ -21,21 +21,20 @@ public class PlayerShooting : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = bulletPool.GetObject();
-
         bullet.transform.position = transform.position;
         bullet.transform.rotation = transform.rotation;
 
         Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
-
         if (rbBullet != null)
         {
-            rbBullet.velocity = transform.forward * bulletSpeed;
-            rbBullet.AddForce(transform.up * force);
+            rbBullet.velocity = Vector2.zero;
+            rbBullet.angularVelocity = 0f;
+            rbBullet.velocity = transform.up * bulletSpeed;  // consistent direction
         }
-            
 
         StartCoroutine(DeactiveBullet(bullet));
     }
+
 
     IEnumerator DeactiveBullet(GameObject bullet)
     {

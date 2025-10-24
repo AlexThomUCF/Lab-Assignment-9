@@ -920,6 +920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 913930942}
   - component: {fileID: 913930941}
+  - component: {fileID: 913930943}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -940,7 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 1177570563}
-  bulletSpeed: 10
+  bulletSpeed: 30
   force: 2000
 --- !u!4 &913930942
 Transform:
@@ -951,13 +952,26 @@ Transform:
   m_GameObject: {fileID: 913930940}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.08, y: -5.9, z: -0.017367592}
+  m_LocalPosition: {x: 0, y: -5.9, z: -0.017367592}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 71071004}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &913930943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913930940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d5f05b37a592f43b24eb067e50d4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
 --- !u!1 &1106113471
 GameObject:
   m_ObjectHideFlags: 0
