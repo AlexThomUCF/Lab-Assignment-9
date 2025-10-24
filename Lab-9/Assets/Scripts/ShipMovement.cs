@@ -1,29 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int direction = 1;
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector2.right * moveSpeed * direction * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Boundary")
+        if (collision.CompareTag("Boundary"))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
-            moveSpeed *= -1;
+            direction *= -1; // flip direction
         }
     }
+
+    // For save/load
+    public float GetDirection() => direction;
+    public void SetDirection(float dir) => direction = (dir >= 0f) ? 1 : -1;
 }

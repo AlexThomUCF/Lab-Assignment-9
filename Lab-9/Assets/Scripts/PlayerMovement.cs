@@ -18,8 +18,21 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = new Vector3(moveInput * moveSpeed * Time.deltaTime, 0f, 0f);
         transform.position += move;
 
-        // clamp position so player can't move past -12 or 12
+        // Player can't move past -12 or 12
         float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+    }
+
+        public void SaveData(GameData data) // Saves players position
+    {
+        Vector3 p = transform.position;
+        data.playerX = p.x;
+        data.playerY = p.y;
+        data.playerZ = p.z;
+    }
+
+    public void LoadData(GameData data) // Loads players position
+    {
+        transform.position = new Vector3(data.playerX, data.playerY, data.playerZ);
     }
 }

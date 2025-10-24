@@ -8,11 +8,9 @@ public class PlayerShooting : MonoBehaviour
     public float bulletSpeed = 10f;
     public float force = 2000f;
 
-
-    // Update is called once per frame
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
         }
@@ -21,20 +19,20 @@ public class PlayerShooting : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = bulletPool.GetObject();
+
         bullet.transform.position = transform.position;
         bullet.transform.rotation = transform.rotation;
 
         Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
+
         if (rbBullet != null)
         {
-            rbBullet.velocity = Vector2.zero;
-            rbBullet.angularVelocity = 0f;
-            rbBullet.velocity = transform.up * bulletSpeed;  // consistent direction
+            rbBullet.velocity = Vector2.up * bulletSpeed;
+            rbBullet.AddForce(transform.up * force);
         }
 
         StartCoroutine(DeactiveBullet(bullet));
     }
-
 
     IEnumerator DeactiveBullet(GameObject bullet)
     {

@@ -6,22 +6,15 @@ public class EnemySpawner : MonoBehaviour
 {
     private GameObject[] prefabList;
     public int waveDelay;
-    // Start is called before the first frame update
+
     void Start()
     {
         prefabList = Resources.LoadAll<GameObject>("EnemyPrefabs");
         StartCoroutine(WaveStart());
-
-
     }
-
-
-   
-    // Update is called once per frame
 
     public void spawnEnemy()
     {
-
         for (int i = 0; i < 7; i++)
         {
             int tempNumber = Random.Range(0, prefabList.Length);
@@ -45,22 +38,16 @@ public class EnemySpawner : MonoBehaviour
                 Debug.LogWarning($"Enemy prefab '{enemyPrefab.name}' has no Enemy script!");
             }
 
-
             enemyInstance.transform.SetParent(transform);
-
         }
-
-
-
     }
 
     IEnumerator WaveStart()
     {
-        while(true)
+        while (true)
         {
             spawnEnemy();
             yield return new WaitForSeconds(waveDelay);
         }
-
     }
 }

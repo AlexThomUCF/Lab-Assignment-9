@@ -32,5 +32,10 @@ public class ScoreManager : MonoBehaviour
             observer.OnScoreChanged(score);
         }
     }
-}
 
+    // So GameManager script can sync current score
+    public int GetCurrentScore()
+    {
+        return score;
+    }
+}

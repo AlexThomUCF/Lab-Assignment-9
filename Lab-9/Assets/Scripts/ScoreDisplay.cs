@@ -3,7 +3,7 @@ using TMPro;
 
 public class ScoreDisplay : MonoBehaviour, IScoreObserver
 {
-    public TMP_Text scoreText;  // Use TMP_Text instead of Text
+    public TMP_Text scoreText;
 
     void Start()
     {
